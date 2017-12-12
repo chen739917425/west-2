@@ -7,7 +7,6 @@
     .b_style
 	{
 		text-align:center;
-		background-color:#DFFFDF;
 		font-weight:bold;
 		font-size:20px;
 	}
@@ -22,12 +21,15 @@
 	}
   </style>	
   <body class='b_style'>
+    <div style="position:fixed; left:0px; top:0px; width:100%;height:100%;z-index:-1">       
+      <img src="http://img4.imgtn.bdimg.com/it/u=3055598097,3360735557&fm=27&gp=0.jpg" width="100%" height="100%"/>
+    </div>  
     <h1 class="t_style">留言板</h1>                             
 	<?php
 	$servername = "localhost";                                  
     $username = "root";
     $password = "0424";
-	$button="";
+	$p="";
     $link = mysqli_connect($servername, $username, $password);  // 创建连接
     if (!$link)                                                 // 检测连接
         die("Connection failed: " . mysqli_connect_error());
@@ -42,7 +44,9 @@
 	{
 		echo '<tr>'.'<th>'.$row['author'].'</th>'.'<th>'.$row['message'].'</th>'.'<th>';
 		if ($_COOKIE['uname']==$row['author'])
-			echo "<a href='delmessage.php?con='".$row['message'].">删除</a>";
+		{
+			echo "<a href='delmessage.php?cont=".$row['message'].">删除</a>";
+		}			
 		echo '</th></tr>';
 	}
     ?>
