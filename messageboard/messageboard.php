@@ -45,7 +45,7 @@
 		echo '<tr>'.'<th>'.$row['author'].'</th>'.'<th>'.$row['message'].'</th>'.'<th>';
 		if ($_COOKIE['uname']==$row['author'])
 		{
-			echo "<a href='delmessage.php?cont=".$row['message'].">删除</a>";
+			echo '<a href="delmessage.php?cont='.$row['message'].'">删除</a>';
 		}			
 		echo '</th></tr>';
 	}

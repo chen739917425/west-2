@@ -7,7 +7,7 @@
   if (!$link)                                                  //检测连接
     die("Connection failed: " . mysqli_connect_error());
   mysqli_select_db($link,'my_db');	                           //选择库
-  $select='SELECT * FROM my_guest WHERE user_id ='.$_POST['username'];    //找到与输入用户名相同的信息，要取出两项
+  $select="SELECT * FROM my_guest WHERE user_id ='".$_POST['username']."'";    //找到与输入用户名相同的信息，要取出两项
   $result=mysqli_query($link,$select);
   if ($result==false)
     echo mysqli_error($link);	  

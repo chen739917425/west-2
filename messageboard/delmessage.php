@@ -6,8 +6,7 @@
   if (!$link)                                                  //检测连接
     die("Connection failed: " . mysqli_connect_error());
   mysqli_select_db($link,'my_db');	                           //选择库
-  $delcont=$_GET['cont'];
-  $del='DELETE FROM messageboard WHERE author='.$delcont;
+  $del="DELETE FROM messageboard WHERE message='".$_GET['cont']."'";
   if (mysqli_query($link,$del))
 	header('location:messageboard.php');
   else
