@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>登陆注册</title>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+	
+}
+	body{
+		position: relative;
+		background-color:rgb(246,246,246);
+	}
+</style>
+</head>
+
+<body>
+<div id="front" style="width: 100%;background-color: rgba(243,215,161,0.55);height: 65px;border-bottom-style:solid;border-bottom-color: rgba(255,184,0,0.3)"> <span style="color: rgba(232,113,35,1.00);font-size: 30px;font-family:微软雅黑;line-height: 65px;">Online Shopping.</span> </div>
+<div id="center" style="width:1000px;height: 500px;margin: 80px auto;">
+  <div id="center-left" style="float: left;width: 600px; ">
+    <div id="img_container" style=""><img src="centerl.jpg" alt="" width="400px" height="auto"/></div>
+  </div>
+  <div id="center-right" style="float: left;">
+    <div id="login_container" style="border: 2px rgba(239,223,88,0.4) solid;width: 300px;height: 380px;border-radius: 30px;">
+      <div id="cont_front" style="width: 100%;height: 70px;background-color: beige;border-top-left-radius:30px;border-top-right-radius: 30px;" ><span style="font-size: 30px;line-height: 70px;color: rgba(121,118,60,1.00);display: block;text-align: center;">注册/登陆</span></div>
+      <div id="cont_under" style="position: relative;">
+        <div id="form_container" style="position: absolute;top:50px;" >
+          <form method="" action="">
+            <div>
+              <label>用户名:</label>
+              <input type="text" name="username"/>
+            </div>
+            <div>
+              <label>密    码：</label>
+              <input type="password" name="pass"/>
+            </div>
+          </form>
+        </div>
+        <div id="but_container" style="position: absolute;top:110px;left:90px">
+          <input type="submit" value="登陆"/>
+          <input type="reset" value="重置">
+		  <a href="register.php">注册</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
