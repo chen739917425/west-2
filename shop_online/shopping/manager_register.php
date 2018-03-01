@@ -43,9 +43,11 @@
                 $a_passwordErr="两次密码不一致";
 			else
 			{
-				$select="SELECT manager_id FROM manager WHERE manager_id=".$_POST['username'];    //检测用户名是否已存在
-				$result = mysqli_query($link,$select);
-				if (mysqli_num_rows($result)>0)
+				$select1 = "SELECT manager_id FROM manager WHERE manager_id=".$_POST['username'];    
+				$select2 = "SELECT user_id FROM user WHERE user_id=".$_POST['username'];         //检测用户名是否已存在
+				$result1 = mysqli_query($link,$select1);
+				$result2 = mysqli_query($link,$select2);
+				if (mysqli_num_rows($result1)>0||mysqli_num_rows($result2)>0)
 					$nameErr="用户名已存在";
 				else
 				{
