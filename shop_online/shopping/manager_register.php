@@ -43,8 +43,8 @@
                 $a_passwordErr="两次密码不一致";
 			else
 			{
-				$select1 = "SELECT manager_id FROM manager WHERE manager_id=".$_POST['username'];    
-				$select2 = "SELECT user_id FROM user WHERE user_id=".$_POST['username'];         //检测用户名是否已存在
+				$select1 = "SELECT manager_id FROM manager WHERE manager_id='".$_POST['username']."'";    
+				$select2 = "SELECT user_id FROM user WHERE user_id='".$_POST['username']."'";         //检测用户名是否已存在
 				$result1 = mysqli_query($link,$select1);
 				$result2 = mysqli_query($link,$select2);
 				if (mysqli_num_rows($result1)>0||mysqli_num_rows($result2)>0)
@@ -84,7 +84,7 @@
       <br/><br/>  
       <input type="submit" name="submit" value="注册" >
 	  <br/><br/>
-	  <a href="login.php"><span class="b_style">返回登录界面</span></a> 
+	  <a href="login.html"><span class="b_style">返回登录界面</span></a> 
     </form>
   </body>	
 </html>

@@ -8,7 +8,7 @@
   mysqli_select_db($link,'shop_db');                            //选择库
   if (!isset($_COOKIE['user']))                                   
     header('location:login.html');                             //检验是否登录
-    $cmd_id=$_GET[''];
+    $cmd_id=$_GET['c_id'];
     $select="SELECT commodity_name FROM commodity WHERE commodity_id='".$cmd_id."'";
 	$result=mysqli_query($link,$select);
 	$row=mysqli_fetch_array($result);

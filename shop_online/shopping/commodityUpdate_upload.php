@@ -1,7 +1,11 @@
+<?php
+session_start();
+$_SESSION['cmd_id']=$_GET['c_id'];
+?>
 <html>
   <head>
     <meta charset="utf-8">
-	<title>商品添加</title>
+	<title>商品信息修改</title>
   </head>
   <style type ="text/css">
     .h_style
@@ -14,8 +18,8 @@
     <div style="position:fixed; left:0px; top:0px; width:100%;height:100%;z-index:-1">       
       <img src="background.jpg" width="100%" height="100%"/>
     </div>  
-    <h1>请上传商品信息（商品图片仅支持“.jpg”、“.png”、“.gif”、“.webp”格式）</h1>
-	<form action="commodity_add.php" method="post" enctype="multipart/form-data">
+    <h1>修改商品信息（商品图片仅支持“.jpg”、“.png”、“.gif”、“.webp”格式）</h1>
+	<form action="commodity_update.php" method="post" enctype="multipart/form-data">
 	  <label>商品名</label>
 	  <input type="text" name="commodity_name">
 	  <br/>

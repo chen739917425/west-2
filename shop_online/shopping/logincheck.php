@@ -11,7 +11,7 @@
   $manager_select="SELECT * FROM manager WHERE manager_id ='".$_POST['username']."'";  //在管理员表中找到与输入用户名相同的信息，要取出两项
   $user_result=mysqli_query($link,$user_select);
   $manager_result=mysqli_query($link,$manager_select);
-  if ($user_result==false||manager_result==false)
+  if ($user_result==false||$manager_result==false)
     echo mysqli_error($link);	  
   $urow = mysqli_fetch_array($user_result);     //取出普通用户查询结果
   $mrow = mysqli_fetch_array($manager_result);  //取出管理员查询结果
@@ -19,13 +19,13 @@
   {      
     if($urow['user_id']==$_POST['username'] && $urow['user_password']==$newpassword)
 	{  
-        setcookie('user',$_POST['user'],time()+3600);  
-        header('location:commodity_show.php');  
+        setcookie('user',$_POST['username'],time()+3600);  
+        header('location:homepage.php');  
     }  
-	else if($mrow['manager_id']==$_POST['username'] && $urow['manager_password']==$newpassword)
+	else if($mrow['manager_id']==$_POST['username'] && $mrow['manager_password']==$newpassword)
 	{
         setcookie('manager',$_POST['username'],time()+3600);  
-        header('location:commodity_show.php');  		
+        header('location:homepage.php');  		
 	}	
     else 
 	{

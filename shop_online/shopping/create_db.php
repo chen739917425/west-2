@@ -37,13 +37,12 @@ else
 //建商品信息表(id,商品名，种类，价格，描述，图片)
 $create_commoditytable='CREATE TABLE commodity                          
 (
-    commodity_id int(10) NOT NULL, 
+    commodity_id int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL, 
 	commodity_name varchar(20) NOT NULL, 
 	commodity_sort varchar(40) NOT NULL,
 	commodity_price int NOT NULL,
 	commodity_describe varchar(120),
-	image_url varchar(120) 	NOT NULL,
-    PRIMARY KEY (commodity_id)	
+	image_url varchar(120) 	NOT NULL
 )';                                                         
 if (mysqli_query($link,$create_commoditytable))                              
     echo '创建商品表成功';
@@ -52,11 +51,10 @@ else
 //建购物车表(用户id作为外键，商品ID，商品名)
 $create_shopcart='CREATE TABLE shopcart
 (
-    cart_id int(10) NOT NULL,
+    cart_id int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL,
     pur_id varchar(40) NOT NULL,
 	cmd_id int(10) NOT NULL,
-    cmd_name varchar(40) NOT TO NULL,
-	PRIMARY KEY (cart_id)
+    cmd_name varchar(40) NOT NULL
 )';
 if (mysqli_query($link,$create_shopcart))                              
     echo '创建购物车表成功';

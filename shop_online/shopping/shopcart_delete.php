@@ -6,7 +6,7 @@
   if (!$link)                                                  //检测连接
     die("Connection failed: " . mysqli_connect_error());
   mysqli_select_db($link,'shop_db');	                           //选择库
-  $del="DELETE FROM shopcart WHERE cart_id='".$_GET['']."'";
+  $del="DELETE FROM shopcart WHERE cart_id='".$_GET['cart_id']."'";
   if (mysqli_query($link,$del))
 	header('location:shopcart.php');
   else

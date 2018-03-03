@@ -1,8 +1,12 @@
 <!doctype html>
+<?php
+session_start();
+$_SESSION['cmd_sort']=$_GET['sort']; //接收商品类别
+?>
 <html>
 <head>
 <meta charset="utf-8">
-<title>商品浏览</title>
+<title>商品展示</title>
 <style>
 * {
 	margin: 0;
@@ -14,7 +18,7 @@
 		background-color:rgb(246,246,246);
 	}
 </style>
-<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript">
 var curPage = 1; //当前页码
 var total,pageSize,totalPage;
@@ -37,7 +41,7 @@ function getData(page){
 			var li = "";
 			var list = json.list;
 			$.each(list,function(index,array){ //遍历json数据列
-				li += "<li><a href='#'><img src='"+array['pic']+"'>"+array['title']+"</a></li>";
+				li += "<li><a href='commodity_detail?cmd_id='"+array['commodity_id']+"'><img src='"+array['image_url']+"'>"+array['commodity_name']+"</a><br/>"+array['commodity_price']+"</li>";
 			});
 			$("#list ul").append(li);
 		},
@@ -88,18 +92,10 @@ $(function(){
 </head>
 
 <body>
-<div id="front" style="width: 100%;background-color: rgba(243,215,161,0.55);height: 65px;border-bottom-style:solid;border-bottom-color: rgba(255,184,0,0.3)"> <span style="color: rgba(232,113,35,1.00);font-size: 30px;font-family:微软雅黑;line-height: 65px;">Online Shopping.</span> </div>
-<div id="ShowIdPart" style="font-size: 14px;color: orange;float: right;margin-right: 10px;margin-top: 6px;"><img src="account.png" alt="" width="20px"/><span>登陆的用户名  |</span><a style="font-size: 14px;color: orange;" href="">注销</a><span>  |  </span><a href="" style="font-size: 14px;color: orange;"><img src="cart.png" alt="" width="20px">购物车</a>
-</div>
 	
-<div id="DivPages"><!--此处为分页栏 数据加载成功后显示 还没加css美化-->
+<div id="main" style="height: 100px;z-index: 1;"><!--此处为分页栏 数据加载成功后显示 还没加css美化-->
 	<div id="list"><ul></ul></div>
 	<div id="pagecount"></div>
 </div>
-	
-<div id="GoodsShow">
-	<div id="card" style="margin-top:15px;margin-right:15px;color: gray;font-family: 微软雅黑;width: 200px;background: rgba(248,248,245,1.00);height: 260px;border: 1px solid #BFBFBF;border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;border-top-left-radius: 20px;border-top-right-radius: 20px;box-shadow: 2px 2px 3px #aaaaaa;float: left"><div style="width:66px;height: 66px;border-radius: 50%;background-color:rgba(189,163,113,1.00);margin: 20px auto;">里面放商品图片</div><div style="clear: both;border-left: 2px solid gray;margin:5px 0px;padding-left: 5px;float: left;font-size: 14px;color: gray;">商品名称<span style="padding: 40px;">example</span></div><div style="clear: both;border-left: 2px solid gray;margin:5px 0px;padding-left: 5px;float: left;font-size: 14px;color: gray;">商品价格<span style="padding: 40px;">example</span></div><div style="clear: both;border-left: 2px solid gray;margin:5px 0px;padding-left: 5px;float: left;font-size: 14px;color: gray;">      <a href="" style="padding: 40px;">加入购物车</a></div></div>	
-</div>
-
 </body>
 </html>

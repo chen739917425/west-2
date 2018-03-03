@@ -1,6 +1,13 @@
 <?php
 if (isset($_COOKIE['user']))
-	setcookie('user',,time()-3600);
+{
+	setcookie('user',0,time()-3600);
+	header('location:homepage.php');
+}	
 else if (isset($_COOKIE['manager']))
-	setcookie('manager',,time()-3600);
+{
+	setcookie('manager',0,time()-3600);
+	header('location:homepage.php');
+}
+header('location:homepage.php');	
 ?>

@@ -10,12 +10,12 @@
     header('location:login.html');                             //检验是否管理员
   if($_POST['submit'])
   {
-	$cmd_id=$_SESSION['cmd_id'];  
-    $name=$_POST[''];
-	$price=$_POST[''];
-	$describe=$_POST[''];
-	$sort=$_POST[''];
-	$url=$_POST[''];
+	$cmd_id=$_SESSION['cmd_id'];
+    unset($_SESSION['cmd_id']);	
+    $name=$_POST['commodity_name'];
+	$price=$_POST['commodity_price'];
+	$describe=$_POST['commodity_describe'];
+	$sort=$_POST['commodity_sort'];
 	if (empty($name)||empty($price)||empty($sort))
 	  echo '商品名、价格、分类不能为空';
     else
@@ -47,7 +47,7 @@
 			else
 			{
 				$url="http://127.0.0.1/shop_online/commodity_picture/".$_FILES["file"]["name"];
-				$update="UPDATE commodity SET commodity_name='".$name."',commodity_price='".$price."',commodity_sort='".$sort."',image_url='".$url."',commodity_describe='".$describe."' WHERE commodity_id=".$cmd_id;
+				$update="UPDATE commodity SET commodity_name='".$name."',commodity_price=".$price.",commodity_sort='".$sort."',image_url='".$url."',commodity_describe='".$describe."' WHERE commodity_id=".$cmd_id;
 				if(mysqli_query($link,$insert))
 				{
 					move_uploaded_file($_FILES["file"]["tmp_name"], 'http://127.0.0.1/shop_online/commodity_picture/' . $_FILES["file"]["name"]);
@@ -56,7 +56,7 @@
 				else
 				{
 					echo '商品信息修改失败，请重试：'.mysqli_error($link);
-					echo '<a href="commodity_show.php">返回商城</a>';
+					echo '<a href="homepage.php">返回商城</a>';
 				}
 			}
 		  }		
