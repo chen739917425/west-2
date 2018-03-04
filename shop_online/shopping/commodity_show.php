@@ -1,7 +1,6 @@
 <!doctype html>
 <?php
-session_start();
-$_SESSION['cmd_sort']=$_GET['sort']; //接收商品类别
+setcookie('cmd_sort',$_GET['sort'],time()+600);
 ?>
 <html>
 <head>
@@ -25,8 +24,8 @@ var total,pageSize,totalPage;
 //获取数据
 function getData(page){ 
 	$.ajax({
-		type: 'POST',
 		url: 'pages.php',
+		type: 'POST',
 		data: {'pageNum':page-1},
 		dataType:'json',
 		beforeSend:function(){
@@ -41,7 +40,7 @@ function getData(page){
 			var li = "";
 			var list = json.list;
 			$.each(list,function(index,array){ //遍历json数据列
-				li += "<li><a href='commodity_detail?cmd_id='"+array['commodity_id']+"'><img src='"+array['image_url']+"'>"+array['commodity_name']+"</a><br/>"+array['commodity_price']+"</li>";
+				li += "<div style=\"float:left;margin:10px\"><a href='commodity_detail?cmd_id="+array['commodity_id']+"'><img src='"+array['image_url']+"' width=\"300px\" height=\"400px\">"+"<br/>"+array['commodity_name']+"</a><br/> ￥"+array['commodity_price']+"</div>";
 			});
 			$("#list ul").append(li);
 		},
@@ -93,9 +92,9 @@ $(function(){
 
 <body>
 	
-<div id="main" style="height: 100px;z-index: 1;"><!--此处为分页栏 数据加载成功后显示 还没加css美化-->
+<div id="main" style="height: 200px;z-index: 1;"><!--此处为分页栏 数据加载成功后显示 还没加css美化-->
 	<div id="list"><ul></ul></div>
-	<div id="pagecount"></div>
+	<div id="pagecount" style="clear:both;"></div>
 </div>
 </body>
 </html>

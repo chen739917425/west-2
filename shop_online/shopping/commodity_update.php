@@ -10,8 +10,7 @@
     header('location:login.html');                             //检验是否管理员
   if($_POST['submit'])
   {
-	$cmd_id=$_SESSION['cmd_id'];
-    unset($_SESSION['cmd_id']);	
+	$cmd_id=$_COOKIE['cmd_id'];
     $name=$_POST['commodity_name'];
 	$price=$_POST['commodity_price'];
 	$describe=$_POST['commodity_describe'];
@@ -40,18 +39,18 @@
 		  }
 		  else
 		  {
-			if (file_exists("http://127.0.0.1/shop_online/commodity_picture/" . $_FILES["file"]["name"]))
+			if (file_exists("commodity_picture/" . $_FILES["file"]["name"]))
 			{
 				echo $_FILES["file"]["name"] . '该商品图片已存在.';
 			}
 			else
 			{
-				$url="http://127.0.0.1/shop_online/commodity_picture/".$_FILES["file"]["name"];
+				$url="commodity_picture/".$_FILES["file"]["name"];
 				$update="UPDATE commodity SET commodity_name='".$name."',commodity_price=".$price.",commodity_sort='".$sort."',image_url='".$url."',commodity_describe='".$describe."' WHERE commodity_id=".$cmd_id;
-				if(mysqli_query($link,$insert))
+				if(mysqli_query($link,$update))
 				{
-					move_uploaded_file($_FILES["file"]["tmp_name"], 'http://127.0.0.1/shop_online/commodity_picture/' . $_FILES["file"]["name"]);
-					header('location:commodity_show.php');
+					move_uploaded_file($_FILES["file"]["tmp_name"], 'commodity_picture/' . $_FILES["file"]["name"]);
+					header('location:homepage.php');
 				}
 				else
 				{
@@ -65,5 +64,6 @@
 	    {
 		   echo "非法的文件格式";
 	    }      			
-	}	
+   	}	
+  }	
 ?>

@@ -40,7 +40,7 @@ $create_commoditytable='CREATE TABLE commodity
     commodity_id int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY NOT NULL, 
 	commodity_name varchar(20) NOT NULL, 
 	commodity_sort varchar(40) NOT NULL,
-	commodity_price int NOT NULL,
+	commodity_price decimal(10,2) NOT NULL,
 	commodity_describe varchar(120),
 	image_url varchar(120) 	NOT NULL
 )';                                                         

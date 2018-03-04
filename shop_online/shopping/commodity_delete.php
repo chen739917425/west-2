@@ -8,10 +8,10 @@
   mysqli_select_db($link,'shop_db');	                           //选择库
   $del="DELETE FROM commodity WHERE commodity_id='".$_GET['c_id']."'";
   if (mysqli_query($link,$del))
-	header('location:commodity_show.php');
+	header('location:homepage.php');
   else
   {
 	echo "删除失败，请重试".mysqli_error($link);
-    echo '<a href="commodity_show.php">返回商城</a>';	
+    echo '<a href="homepage.php">返回商城</a>';	
   }
 ?>

@@ -1,6 +1,5 @@
 <?php
-session_start();
-$_SESSION['cmd_id']=$_GET['c_id'];
+setcookie('cmd_id',$_GET['c_id'],time()+600);
 ?>
 <html>
   <head>

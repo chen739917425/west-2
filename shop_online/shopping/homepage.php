@@ -52,10 +52,10 @@ if (isset($_COOKIE['manager']))
 <div id="DivKinds" style="margin: 40px;"><!--分类导航-->
 	<span style="color: rgba(232,113,35,1.00);font-size: 30px;font-family:微软雅黑;">分类导航</span>
 	<div>
-	<a href="commodity_show.php?sort='服装'" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">服装</a>
-	<a href="commodity_show.php?sort='食品'" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">食品</a>
-	<a href="commodity_show.php?sort='娱乐'" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">娱乐</a>
-	<a href="commodity_show.php?sort='办公用品'" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">办公</a>
+	<a href="commodity_show.php?sort=服装" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">服装</a>
+	<a href="commodity_show.php?sort=食品" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">食品</a>
+	<a href="commodity_show.php?sort=娱乐" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">娱乐</a>
+	<a href="commodity_show.php?sort=办公用品" target="KindsFrame" style="font-size: 20px;padding-right: 10px; color: rgba(246,153,26,0.91)">办公</a>
 	</div>
 	<iframe name="KindsFrame" frameborder="0" width="100%" height="500px"></iframe>
 </div>

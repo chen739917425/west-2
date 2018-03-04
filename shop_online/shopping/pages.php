@@ -6,9 +6,9 @@ $link=mysqli_connect($servername,$username,$password);
 if (!$link)                                                 // 检测连接
 die("Connection failed: " . mysqli_connect_error());
 mysqli_select_db($link,'shop_db');                            //选择库
-$sort=$_SESSION['cmd_sort']; //接收商品类别
-unset($_SESSION['cmd_sort']);
+header("Content-Type: application/json; charset=utf-8");
 $page = intval($_POST['pageNum']);
+$sort = $_COOKIE['cmd_sort'];
 $select="SELECT commodity_id FROM commodity WHERE commodity_sort='".$sort."'";
 $result = mysqli_query($link,$select);
 $total = mysqli_num_rows($result);//总记录数
@@ -32,5 +32,5 @@ while($row=mysqli_fetch_array($result))
 		'image_url' => $row['image_url']
 	 );
 }
-echo json_encode($arr,JSON_UNESCAPED_UNICODE);
+echo json_encode($arr);
 ?>
