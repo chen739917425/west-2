@@ -10,6 +10,9 @@ $commodity_id=$_GET['cmd_id'];
 $select="SELECT * FROM commodity WHERE commodity_id='".$commodity_id."'";
 $result=mysqli_query($link,$select);
 $row=mysqli_fetch_array($result);
+echo '<div style="position:fixed; left:0px; top:0px; width:100%;height:100%;z-index:-1">       
+      <img src="background.jpg" width="100%" height="100%"/>
+      </div> ';
 echo '<img src="'.$row['image_url'].'" width="200px" height="350px"/> <br/>';
 echo $row['commodity_name'];
 echo '<br/>';

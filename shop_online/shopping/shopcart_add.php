@@ -16,11 +16,11 @@
 	$insert="INSERT INTO shopcart (pur_id,cmd_id,cmd_name) VALUES ('".$_COOKIE['user']."',".$cmd_id.",'".$cmd_name."')";
 	if (mysqli_query($link,$insert))
 	{
-		header('location:commodity_show.php');
+		header('location:homepage.php');
 	}	
 	else
 	{
 		echo '商品添加至购物车失败，请重试'.'<br>';
-		echo '<a href="commodity_show.php">返回商城</a>';
+		echo '<a href="homepage.php">返回商城</a>';
 	}
 ?>

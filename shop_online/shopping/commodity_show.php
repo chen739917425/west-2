@@ -91,7 +91,9 @@ $(function(){
 </head>
 
 <body>
-	
+<div style="position:fixed; left:0px; top:0px; width:100%;height:100%;z-index:-1">       
+      <img src="background.jpg" width="100%" height="100%"/>
+</div>  	
 <div id="main" style="height: 200px;z-index: 1;"><!--此处为分页栏 数据加载成功后显示 还没加css美化-->
 	<div id="list"><ul></ul></div>
 	<div id="pagecount" style="clear:both;"></div>
