@@ -23,7 +23,7 @@ setcookie('cmd_id',$_GET['c_id'],time()+600);
 	  <input type="text" name="commodity_name">
 	  <br/>
 	  <laber>价格(单位￥)</label>
-	  <input type="number" name="commodity_price" min="0" >
+	  <input type="text" name="commodity_price">
 	  <br/>
 	  <label>种类</label>
 		<select name="commodity_sort">
@@ -43,5 +43,6 @@ setcookie('cmd_id',$_GET['c_id'],time()+600);
 	  <br><br>
 	  <input type="submit" name="submit" value="提交">
 	</form>  
+	<a href='commodity_show.php?sort=服装'>返回商城</a>
   </body>  
 <html>  

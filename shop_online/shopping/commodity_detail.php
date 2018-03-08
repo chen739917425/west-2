@@ -25,4 +25,6 @@ if (isset($_COOKIE['manager']))
 	echo '<a href ="commodityUpdate_upload.php?c_id='.$row['commodity_id'].'">修改商品信息</a> <br/>';
     echo '<a href ="commodity_delete.php?c_id='.$row['commodity_id'].'">删除该商品</a>';
 }	
+echo "<br/><a href='commodity_show.php?sort=服装'>返回商城</a>";
+echo "<br/><a href='shopcart.php'>查看购物车</a>";
 ?>

@@ -40,5 +40,6 @@ if (!isset($_COOKIE['user']))
 		echo '</th></tr>';
 	  }
 	  ?>
+	<a href='commodity_show.php?sort=服装'>返回商城</a>  
   </body>
 </html>  
