@@ -1,5 +1,4 @@
 <?php
-    include 'DiaryDB';
     $serveName = 'localhost';
     $userName = 'root';
     $password = '0424';
