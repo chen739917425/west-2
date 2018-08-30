@@ -96,9 +96,25 @@
                 exit;  
             }      
         }
+        
+        public static function postData($data, $url){
+            $ch = curl_init();
+            $setopt = array(
+                CURLOPT_URL => $url,
+                CURLOPT_POST => TRUE,  
+                CURLOPT_RETURNTRANSFER => TRUE,
+                CURLOPT_POSTFIELDS => $data,  
+                CURLOPT_HTTPHEADER => array(  
+                    'Content-Type: application/json; charset=utf-8',  
+                    'Content-Length: ' . strlen($data)
+                )  
+            ); 
+            curl_setopt_array($ch, $setopt);
+            $res = curl_exec($ch);
+            return $res;
+        }
 
-        public static function getStatusCode($status)  
-        {  
+        public static function getStatusCode($status){  
             $codes = Array(  
                 100 => 'Continue',  
                 101 => 'Switching Protocols',  
@@ -143,6 +159,6 @@
                 505 => 'HTTP Version Not Supported'  
             );  
             return (isset($codes[$status])) ? $codes[$status] : '';  
-        }  
+        }
     } 
 ?>

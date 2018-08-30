@@ -4,7 +4,7 @@
     $db = new DiaryDatabase('localhost', 'root', '0424');
     $obj = RestUtils :: processRequest();
     switch ($obj->getMethod()){
-        case 'get':
+        case 'post':
             $data = $obj->getData();
             $title = $data[''];
             $content = $data[''];
@@ -17,7 +17,7 @@
             else
                 echo "<script> alert('新建日记失败，请重试!');window.location.href=' .html';</script>";
             break;
-        case 'post':
+        case 'get':
         
             break;
     }
