@@ -7,16 +7,39 @@
         case 'post':
             $data = $obj->getData();
             $token = $data['token'];
-            header('location: verify_token.php');
+            $url = 'http://localhost/verify_token.php';
+            $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
+            if (!$tmp['status']){
+                echo "<script> alert('身份验证失败，请重试!');</script>";
+                exit(0);
+            }
+            $userId = $res['userName'];
             $openTime = $data[''];
             $bookName = $data[''];
-            if ($db->insertBook($openTime, $bookName, $userId))
-                echo "<script> window.location.href=' .html';</script>";
-            else
-                echo "<script> alert('新建日记本失败，请重试!');window.location.href=' .html';</script>";            
+            if (!$db->insertBook($openTime, $bookName, $userId))
+                echo "<script> alert('新建日记本失败，请重试!');</script>";
             break;
         case 'get':
-            
+            $data = $obj->getData();
+            $token = $data['token'];
+            $url = 'http://localhost/verify_token.php';
+            $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
+            if (!$tmp['status']){
+                echo "<script> alert('身份验证失败，请重试!');</script>";
+                exit(0);
+            }
+            $userId = $res['userName'];
+            $result = $db->queryBook($userId);
+            if (!$result)
+                exit(0);
+            while ($row = mysqli_fetch_array($result)){
+                $list[] = array 
+                (
+                    'bookName' => $row['book_name'],
+                    'bookId' => $row['id']
+                );
+            }
+            RestUtils :: sendResponse(200, json_encode($list), 'application/json');
             break;
     }
 ?>

@@ -16,6 +16,9 @@
             if (!mysqli_select_db($this->link, 'TimePill'))
                 echo mysqli_error($this->link);
         }
+        function getLink(){
+            return $this->link;
+        }
         function insertBook($gmt, $name, $user_id){
             $ins = "INSERT INTO diary_book ( gmt_open, book_name, user_id ) 
                     VALUES ('". $gmt ." ',' ". $name ." ',' ". $user_id ." ') ";
