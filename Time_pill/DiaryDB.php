@@ -42,31 +42,31 @@
             else   
                 return FALSE;
         }
-        function queryDiary($book_id){
-            $select = "SELECT * FROM diary_book WHERE id = ". $book_id;
-            if ($result = mysqli_query($this->link, $select)){
-                $row = mysqli_fetch_array($result); 
-                $open_time = $row['gmt_open']; //获取该日记本的开放时间
-                if (strtotime($open_time) < time())
-                    $flag = TRUE; 
-                else
-                    $flag = FALSE; 
-                if ($flag){ //已到开放时间
-                    $select = "SELECT * FROM diary WHERE book_id = ". $book_id;
-                    if ($result = mysqli_query($this->link, $select))
-                        return $result;
+        function queryDiary($book_id =''){
+            if (!$book_id){
+                $today = strtotime(date('Y-m-d',time()));
+                $select = "SELECT * FROM diary_book WHERE unix_timestamp(gmt_create) >= ". $today;
+                $result = mysqli_query($this->link, $select);
+            }else{   
+                $select = "SELECT * FROM diary_book WHERE id = ". $book_id;
+                if ($result = mysqli_query($this->link, $select)){
+                    $row = mysqli_fetch_array($result); 
+                    $open_time = $row['gmt_open']; //获取该日记本的开放时间
+                    if (strtotime($open_time) < time())
+                        $flag = TRUE; 
                     else
-                        return FALSE;
-                }else{ //未到开放时间
-                    $today = strtotime(date('Y-m-d',time()));
-                    $select = "SELECT * FROM diary WHERE book_id = ". $book_id ."AND unix_timestamp(gmt_create) >= ". $today;
-                    if ($result = mysqli_query($this->link, $select))
-                        return $result;
-                    else
-                        return FALSE;
-                }
-            }else    
-                return FALSE;
+                        $flag = FALSE; 
+                    if ($flag){ //已到开放时间
+                        $select = "SELECT * FROM diary WHERE book_id = ". $book_id;
+                    }else{ //未到开放时间
+                        $today = strtotime(date('Y-m-d',time()));
+                        $select = "SELECT * FROM diary WHERE book_id = ". $book_id ."AND unix_timestamp(gmt_create) >= ". $today;
+                    }
+                    $result = mysqli_query($this->link, $select);
+                }else    
+                    return FALSE;
+            }
+            return $result;
         }
     }
 ?>

@@ -6,29 +6,31 @@
     switch ($obj->getMethod()){
         case 'post':
             $data = $obj->getData();
-            $token = $data['token'];
+            /*$token = $data['token'];
             $url = 'http://localhost/verify_token.php';
             $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
-            if (!$tmp['status']){
-                echo "<script> alert('身份验证失败，请重试!');</script>";
+            $status = $tmp['status'];
+            if (!$status){
+                echo $status;
                 exit(0);
             }
-            $userId = $res['userName'];
-            $openTime = $data[''];
-            $bookName = $data[''];
+            $userId = $tmp['userName'];*/
+            $openTime = $data['endTime'];
+            $bookName = $data['diaryName'];
             if (!$db->insertBook($openTime, $bookName, $userId))
                 echo "<script> alert('新建日记本失败，请重试!');</script>";
             break;
         case 'get':
             $data = $obj->getData();
-            $token = $data['token'];
+            /*$token = $data['token'];
             $url = 'http://localhost/verify_token.php';
             $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
-            if (!$tmp['status']){
-                echo "<script> alert('身份验证失败，请重试!');</script>";
+            $status = $tmp['status'];
+            if (!$status){
+                echo $status;
                 exit(0);
             }
-            $userId = $res['userName'];
+            $userId = $tmp['userName'];*/
             $result = $db->queryBook($userId);
             if (!$result)
                 exit(0);
