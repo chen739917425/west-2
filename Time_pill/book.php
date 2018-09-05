@@ -1,22 +1,14 @@
 <?php
-// 指定允许其他域名访问
-header('Access-Control-Allow-Origin:*');
-// 响应类型
-header('Access-Control-Allow-Methods:POST');
-// 响应头设置
-header('Access-Control-Allow-Headers:x-requested-with,content-type');
     include 'DiaryDB.php';
     include 'RESTful.php';
+    include 'config.php';
     $db = new DiaryDatabase('localhost', 'root', 'root');
     $obj = RestUtils :: processRequest();
     $data = $obj->getData();
-    $url = 'http://59.77.134.23:5000/verify_token';
-    $success = json_encode(array('status'=>TRUE));
-    $fail = json_encode(array('status'=>FALSE));
     switch ($data['op']){
         case 'post':
-            $token = json_encode(array('token'=>$data['token']));
-            $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
+            $token = (object)array('token'=>$data['token']);
+            $tmp = json_decode(RestUtils :: http_request($verify_url, $token), TRUE);
             $status = $tmp['status'];
             if (!$status){
                 echo $fail;
@@ -32,8 +24,8 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
                 echo $fail;
             break;
         case 'get':
-            $token = json_encode(array('token'=>$data['token']));
-            $tmp = json_decode(RestUtils :: postData($token, $url), TRUE);
+            $token = (object)array('token'=>$data['token']);
+            $tmp = json_decode(RestUtils :: http_request($verify_url, $token), TRUE);
             $status = $tmp['status'];
             if (!$status){
                 echo $fail;
@@ -56,8 +48,7 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
                     'bookId' => $row['id']
                 );
             }
-            $s=json_encode((object)$list);
-            RestUtils :: sendResponse(200, $s, 'application/json');
+            RestUtils :: sendResponse(200, json_encode((object)$list), 'application/json');
             break;
     }
 ?>

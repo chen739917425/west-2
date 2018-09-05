@@ -1,5 +1,4 @@
 <?php
-    date_default_timezone_set('PRC');
     function guid()
     {
         if (function_exists('com_create_guid')) {
