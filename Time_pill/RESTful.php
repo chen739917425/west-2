@@ -1,4 +1,7 @@
 <?php
+    header('Access-Control-Allow-Origin:*');// 指定允许其他域名访问
+    header('Access-Control-Allow-Methods:POST');// 响应类型
+    header('Access-Control-Allow-Headers:x-requested-with,content-type');// 响应头设置
     class RestRequest{
         private $request_vars;
         private $data;
@@ -41,17 +44,15 @@
             $data = array();  
             switch ($request_method){  
                 case 'get':
-                    $data = $_GET['data'];
+                    $data = $_GET;
                     break;  
                 case 'post':  
-                    $data = $_POST['data'];
+                    $data = $_POST;
                     break;
             }  
             $obj->setMethod($request_method);    
             $obj->setRequestVars($data);  
-            if(isset($data['data'])){  
-                $obj->setData(json_decode($data['data']));
-            }  
+            $obj->setData($data);
             return $obj;
         }
 
