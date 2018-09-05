@@ -24,8 +24,8 @@ header('Access-Control-Allow-Headers:x-requested-with,content-type');
             }
             $userId = $tmp['userId'];
             $openTime = $data['endTime'];
-            $bookName = htmlspecialchars($data['subject']);
-            $bookBrief = htmlspecialchars($data['description']);
+            $bookName = addslashes(htmlspecialchars($data['subject']));
+            $bookBrief = addslashes(htmlspecialchars($data['description']));
             if ($db->insertBook($openTime, $bookBrief, $bookName, $userId))
                 echo $success;
             else

@@ -18,7 +18,7 @@
                 exit(0);
             }
             $user_id = $tmp['userId'];
-            $content = htmlspecialchars($data['diaryContent']);
+            $content = addslashes(htmlspecialchars($data['diaryContent']));
             $bookId = $data['bookId'];
             $bookName = $data['bookName'];
             if ($data['diaryImg'] != '') {
