@@ -28,7 +28,8 @@
         img_url VARCHAR(200),
         book_id BIGINT UNSIGNED NOT NULL,
         book_name CHAR(30) NOT NULL,
-        user_id VARCHAR(200) NOT NULL
+        user_id VARCHAR(200) NOT NULL,
+        is_public INT NOT NULL
     )ENGINE = InnoDB  DEFAULT CHARSET = utf8';
     if (!mysqli_query($link, $createTable))
         echo mysqli_error($link);
